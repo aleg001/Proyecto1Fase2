@@ -16,5 +16,16 @@
 
 
 public class Variable {
-    
+
+    // Propiedades
+    String Nombre;
+    String Valor;
+
+    // Constructor
+    public Variable ( String NombreVar, String ValorVar ) {
+
+        Nombre = NombreVar;
+        Valor = ValorVar;
+    }
+
 }
