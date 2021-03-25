@@ -1,34 +1,21 @@
-/**
- * Interfaz del Stack
- * @param <T> parametro a analizar que dependiendo el desarrolladar cambiara sus retornos pero no la funcionalidad
- */
-public interface Stack<T> {
-    /**
-     * @param num equivalente a agregar un elemento al vector
-     */
-    void    push(T num);
+public interface Stack<E> {
 
-    /***
-     *
-     * @return verifica si el vector esta vacio o no
-     */
-    boolean empty();
+  
+    public void push(E data);
 
-    /**
-     *
-     * @return regresa la cantidad de elementos en el vector
-     */
-    int     size();
+ 
+    public E pop();
 
-    /**
-     *
-     * @return quita el ultimo valor del vector y lo pasa al metodo que lo necesito con el valor que antes estaba en el vector
-     */
-    T       pop();
 
-    /**
-     *
-     * @return equivalente al get del vector
-     */
-    T       peek();
+    public E peek();
+
+    public E get(int i);
+
+    public boolean empty();
+
+  
+    public int size();
+
+    public void clear();
+
 }

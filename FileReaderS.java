@@ -23,7 +23,10 @@ import java.io.FileReader;
 public class FileReaderS {
     
 
-    public ArrayList ReadFile(String line){  
+    public ArrayList LeerElArchivo(String line){  
+        
+        //Se define variable para almacenar lo correspondiente al archivo a leer.
+
         ArrayList<List> FileC = new ArrayList<>();
         try{
                 FileReader fr = new FileReader("datos.txt"); BufferedReader bf = new BufferedReader(fr);

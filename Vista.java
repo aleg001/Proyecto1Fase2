@@ -125,7 +125,6 @@ public class Vista {
       
     public void MensajeSalida(){
         System.out.println("Gracias por usar el interprete de Lisp");
-        System.out.println("Feliz Dia");
         System.out.println("Autores:");
         System.out.println("Paola de Leon");
         System.out.println("Marco Jurado");

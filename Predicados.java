@@ -20,5 +20,38 @@ import java.util.Arrays;
 public class Predicados {
     
 
+   private final static String[] PredicadosReservadosLisp = {"ATOM","LIST","EQUAL",">","<"};
 
-}
+   public ArrayList<String> Verificar(String tipoInstruccion) { 
+       tipoInstruccion = tipoInstruccion.toUpperCase();
+       
+       switch (tipoInstruccion) {
+           case "ATOM":
+               
+               break;
+       
+               
+            case "LIST":
+               
+               break;
+       
+            case "EQUAL":
+               
+               break;
+       
+            case ">":
+               
+               break;
+       
+           
+            case "<":
+               
+               break;
+       
+            default:
+               break;
+       }
+
+    
+   }
+

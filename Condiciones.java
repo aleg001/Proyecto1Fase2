@@ -21,12 +21,17 @@ public class Condiciones {
     // Propiedades
     ArrayList<String> Con;
 
-    public ArrayList<String> Verificador(ArrayList<Variable> CONDS){
+    public Condiciones(String condi){ //Constructor
+
+    }
+
+    public ArrayList<String> Verificador(Variable ingreso, ArrayList){ 
+        /**Método que verifica las condiciones del programa */
         ArrayList<String> retorno = null;
 
         return retorno;
     }
 
-    public void Condiciones(String condi)
+    
 
 }
