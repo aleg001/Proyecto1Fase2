@@ -122,7 +122,13 @@ public class Vista {
         return numInt;
       }
 
-      
+    /**
+     * MensajeSalida
+     * @param n/a
+     * @author Alejandro Gomez
+     * @return n/a
+     **/
+
     public void MensajeSalida(){
         System.out.println("Gracias por usar el interprete de Lisp");
         System.out.println("Autores:");
@@ -131,9 +137,65 @@ public class Vista {
         System.out.println("Alejandro Gomez");
         
     }
+    
+    /**
+     * LectorArchivo
+     * @param String name
+     * @author Alejandro Gomez
+     * @return n/a
+     **/
 
     public void LectorArchivo(String name){
         System.out.println("Leyendo el archivo... "+name+".txt");
+    }
+    
+    /**
+     * Error
+     * @param n/a
+     * @author Alejandro Gomez
+     * @return n/a
+     **/
+
+    public void Simbolo1(){
+        System.out.println(">> ");
+    }
+
+    public void Cuidaoo(){
+        System.out.println("Cuidado... :o");
+    }
+
+    /**
+     * RevisaParentesis
+     * @param String s
+     * @author Jose Gomez
+     * @author Ana Molina
+     * @return n/a
+     **/
+    public void RevisaParentesis(String textoString) throws Exception {
+        
+        /*
+        Este metodo se encarga de revisar que los
+        parentesis coincidan para que el programa
+        corra de forma normal jeje. Recibe el String para revisar los parentesis,
+        en caso no coincida el numero de parentesis abiertos con cerrados
+        tira excepcion
+        */
+
+
+        int parentesisAbierto = 0;
+        int parentesisCerrado = 0;
+
+        for(int i = 0; i < textoString.length(); i++) 
+        {
+            if(textoString.charAt(i) == '(')
+            parentesisAbierto++;
+
+            else if(textoString.charAt(i) == ')')
+            parentesisCerrado++;
+        }
+
+        if(parentesisAbierto != parentesisCerrado)
+            System.out.println("Cuidado... Los parentesis no coinciden :o");
     }
 
 }

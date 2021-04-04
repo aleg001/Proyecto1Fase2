@@ -15,21 +15,21 @@
  * @author Antonio Jurado
 */
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Quote {
 
     // Propiedades
-    ArrayList<String> QuoteCode; // ArrayList en donde se almacena todo el código referente.
+    Vector<String> QuoteCode; // Vector en donde se almacena todo el código referente.
 
     /**
      * En el constructor se debe recibir un ArrayList con todos los valores que
      * después de un ( cuentan con la palabra reservada "quote", hasta el paréntesis
      * cerrado. También  deben agregarse todos los valores que van después de un '.
      */
-    public Quote (ArrayList<String> QuoteList) {
+    public Quote (Vector<String> QuoteVector) {
 
-        QuoteCode = QuoteList;
+        QuoteCode = QuoteVector;
 
     }
 
@@ -41,19 +41,11 @@ public class Quote {
 
         String msj = "";
 
-        // Recorrer ArrayList
-        for ( int i = 0; i < QuoteCode.size()-1; i++ ) {
-            String temp = QuoteCode.get(i);
-            // Si es un quote o ' concatena todo lo siguiente hasta antes del )
-            if ( temp == "quote" || temp == "'" ) {
+        // Recorrer Vector menos primer parentesis ni "quote"
+        for ( int i = 2; i < QuoteCode.size()-1; i++ ) {
                 // Concatenar msj con el resto de valores en ArrayList
-                for ( int j = i; j < QuoteCode.size()-1; j++ ) {
-                    String temp2 = QuoteCode.get(j);
-                    if ( temp2 != ")" ) {
-                        msj += temp2;
-                    }
-                }
-            }
+                msj += QuoteCode.get(i);
+                msj += (" ");
         }
 
         return msj;
