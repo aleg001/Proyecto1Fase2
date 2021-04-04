@@ -201,8 +201,23 @@ public class Vista {
     public void Exepsion(){
         System.out.println("Revisa otra vez lo que escriste :s");
     }
+
+    public void VariableExistente(){
+        System.out.println("Cuidado... Esa variable ya existe");
+    }
+
+    public void OperadorInvalido(){
+        System.out.println("Uy... Has ingresado un operador incorrecto");
+    }
     public void FuncionExistente(){
         System.out.println("Esa funcion ya existe... :/");
+    }
+
+    public void IngresoTexto(){
+        System.out.println("Ingrese todo el codigo en una sola linea de texto");
+    }
+    public void Quit(){
+        System.out.println("Recuerde escribir quit para salir del programa");
     }
 
 }

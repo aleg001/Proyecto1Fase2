@@ -7,6 +7,8 @@
 * Ultima modificacion: 6/02/21
 ***************************************************************/
 
+import java.util.Hashtable;
+
 /**
  * Calculadora.java Interface
  * @author Jose Hernández
@@ -18,14 +20,17 @@
 public class Variable {
 
     // Propiedades
-    String Nombre;
-    String Valor;
+    private Hashtable<String, String> Variables;
 
     // Constructor
-    public Variable ( String NombreVar, String ValorVar ) {
-
-        Nombre = NombreVar;
-        Valor = ValorVar;
+    public Variable ( ) {
+        Variables = new Hashtable<>();
     }
+
+    // Getter
+    public Hashtable<String, String> getVariables ( ) { return Variables; }
+
+    // Setter
+    public void setVariables( Hashtable<String, String> variables ) { Variables = variables; }
 
 }

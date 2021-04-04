@@ -108,6 +108,7 @@ public class Tokenize {
             System.out.print("$ ");
         }
         return BitCoins;
+
     }
 
 

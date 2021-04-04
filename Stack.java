@@ -1,21 +1,96 @@
-public interface Stack<E> {
+/*******************************************************
+* Universidad del Valle de Guatemala
+* Algoritmos y Estructuras de Datos
+* Profesor: Moises Gonzales
+* Stack.java
+* Autor: Marco Jurado 
+* Autor: Ana Paola de Leon
+* Autor: Alejandro Gómez
+*
+* Interfaz Calculadora
+* Interface de la calculadora
+********************************************************/
 
-  
-    public void push(E data);
+import java.util.Vector;
 
- 
-    public E pop();
+public class Stack implements IStack<String> {
 
+    //----------------------------------------------------- Atributos ----------------------------------------------------------
 
-    public E peek();
+    private Vector<String> stack; 
 
-    public E get(int i);
+    //----------------------------------------------------- Metodos ----------------------------------------------------------
 
-    public boolean empty();
+    /**
+    * Constructor for StackImplementation class 
+    */
+    public Stack (){
+        this.stack = new Vector<String>();
+    }
 
-  
-    public int size();
+    /**
+    * @author Jose Hernández
+    * @author Ana Molina
+    * @author Antonio Jurado 
+    * @param String dato
+    * @return void
+    */
+    @Override
+    public void push(String dato) {
+        stack.add(dato);
+    }
 
-    public void clear();
+    /**
+    * @author Jose Hernández
+    * @author Ana Molina
+    * @author Antonio Jurado
+    * @return String 
+    */
+    @Override
+    public String pop() {
+        if (empty()){
+            return null;
+            
+        } else {
+            return stack.remove(this.stack.size() - 1);
+        }
+    }
 
+    /**
+    * @author Jose Hernández
+    * @author Ana Molina
+    * @author Antonio Jurado
+    * @return String 
+    */
+    @Override
+    public String peek() {
+        if (empty()){
+            return null;
+            
+        } else {
+            return this.stack.get(this.stack.size() - 1);
+        }
+    }
+
+    /**
+    * @author Jose Hernández
+    * @author Ana Molina
+    * @author Antonio Jurado
+    * @return Boolean, verifica si esta vacio o no. Devuelve True o False dependiendo si stack tiene o no contenidos
+    */
+    @Override
+    public boolean empty() {
+        return (stack.isEmpty());
+    }
+
+    /**
+    * @author Jose Hernández
+    * @author Ana Molina
+    * @author Antonio Jurado
+    * @return int, devuelve el tamaño del stack 
+    */
+    @Override
+    public int size() {
+        return stack.size();
+    }
 }
