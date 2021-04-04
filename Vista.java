@@ -198,4 +198,11 @@ public class Vista {
             System.out.println("Cuidado... Los parentesis no coinciden :o");
     }
 
+    public void Exepsion(){
+        System.out.println("Revisa otra vez lo que escriste :s");
+    }
+    public void FuncionExistente(){
+        System.out.println("Esa funcion ya existe... :/");
+    }
+
 }
