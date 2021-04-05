@@ -160,14 +160,12 @@ public class Calculadora implements ICalculadora {
                       numerox = Integer.parseInt(procedimiento.pop());
 
                   } catch (Exception e) {
-                    System.out.println("Error! Falla total. CALCU X");
                   } 
                   
                   try{                    
                     numeroy = Integer.parseInt(procedimiento.pop());
                     } catch (Exception e) {
  
-                  System.out.println("Error! Falla total. CALCU  YY");
                 } 
                   resultadoxy = suma(numerox, numeroy);
                   String resultadoxy_string = String.valueOf(resultadoxy);

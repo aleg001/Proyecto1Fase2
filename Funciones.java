@@ -17,6 +17,7 @@
 
 import java.util.Hashtable;
 import java.util.Vector;
+import java.util.ResourceBundle.Control;
 
 
 
@@ -57,6 +58,7 @@ public class Funciones {
             v.FuncionExistente();
 
         } else {
+            System.out.println(" ----------> Entre al else del defun");
             // Asignar valor a variable de retorno.
             name = TikToks.get(2);
 
@@ -70,7 +72,9 @@ public class Funciones {
             
             // Conocer cuantos parametros tiene la función
             for (i = VariableInicial; i < TikToks.size(); i++) {
+                System.out.println("----------->  El elemento evaluado es:   ..." + TikToks.get(i)+ "...");
                 if (TikToks.get(i).equals(")")) {
+                    System.out.println("----------->  AHUEVO");
                     VariableFinal = i;
                     break;
                 }
@@ -88,6 +92,11 @@ public class Funciones {
             Parametros.put(name, parametrosUtilizados);
             InstruccionesDeFuncion.put(name, vEctor);
 
+            for(int j = 0; j < vEctor.size() - 1; j++){
+                System.out.println(vEctor.get(j));
+            }
+            
+
         }
 
         return name;
@@ -101,7 +110,7 @@ public class Funciones {
      * @return
      * @throws Exception
      */
-    public String existingFun(Vector<String> line, Calculadora calcu, Hashtable<String, String> Variables) throws Exception {
+    public String existingFun(Vector<String> line, Calculadora calcu, Hashtable<String, String> Variables, Controlador c)throws Exception {
         
         Vector<String> cuerpoFuncion = new Vector<>();
         Vector<String> param = new Vector<>();
@@ -143,16 +152,34 @@ public class Funciones {
                 // Si no es igual entonces no se pasaron todos los parametros y hay un error.
                 v.ArgumentosInvalido();
             } else {
-                // Sustituir variables en parámetros y ejecutar función.
-                cuerpoTemp = new Vector<>(cuerpoFuncion);
-                for (i = 0; i < cuerpoFuncion.size(); i++) {
-                    if(!cuerpoTemp.get(i).matches("[0-9(+-/*)]+")) {
-                        cuerpoTemp.set(i, param.get(in));
-                        in++;
+                try {
+                    // Sustituir variables en parámetros y ejecutar función.
+                    cuerpoTemp = new Vector<>(cuerpoFuncion);
+                    for (i = 0; i < cuerpoFuncion.size()-1; i++) {
+
+                        System.out.println("empecé el FORRRRR  " + i);
+                        
+                        // Remplaza el valor de variables en vector
+                        if (!cuerpoTemp.get(i).matches("[0-9(+-/*)]+")) {
+                            cuerpoTemp.set(i, param.get(in));
+                            in++;
+
+                            System.out.println("                      SWITCH                    ");
+                        }
+
+                        // int resultI = calcu.decode(cuerpoTemp, Variables);
+                        // result = Integer.toString(resultI);
+                        
+                        // for todos los elementos del vector llamar al controlador y que evalue.
+                        c.controlar(cuerpoTemp);
+
+                        System.out.println("TERMINEEEEEEEEEEEEEEE el FORRRRR  " + i);
                     }
+                    
+                } catch (Exception e) {
+                    v.Error();
                 }
-                int resultI = calcu.decode(cuerpoTemp, Variables);
-                result = Integer.toString(resultI);
+                
             }
         }
 
