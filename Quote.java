@@ -19,25 +19,12 @@ import java.util.Vector;
 
 public class Quote {
 
-    // Propiedades
-    Vector<String> QuoteCode; // Vector en donde se almacena todo el código referente.
-
-    /**
-     * En el constructor se debe recibir un ArrayList con todos los valores que
-     * después de un ( cuentan con la palabra reservada "quote", hasta el paréntesis
-     * cerrado. También  deben agregarse todos los valores que van después de un '.
-     */
-    public Quote (Vector<String> QuoteVector) {
-
-        QuoteCode = QuoteVector;
-
-    }
-
     /**
      * Método que retorna un String con valores seguidos de un quote o '
+     * @param QuoteCode Vector con infomación de linea.
      * @return quote por imprimir
      */
-    public String toPrint ( ) {
+    public String toPrint ( Vector<String> QuoteCode ) {
 
         String msj = "";
 

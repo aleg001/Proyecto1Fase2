@@ -14,8 +14,7 @@
  * @author Antonio Jurado
 */
 
-public interface IStack<E> 
-{
+public interface IStack<E> {
    /**
     * Pushes an item onto the top of this stack.
     * @param item Element to add

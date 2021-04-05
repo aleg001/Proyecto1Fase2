@@ -23,15 +23,13 @@ public class Tokenize {
 
     private Vector<String> BitCoins = new Vector<String>();
 
-    
-    
     /**
      * RevisaParentesis
      * @param String s
      * @return n/a
      **/
 
-    public void RevisaParentesis(String textoString) throws Exception {
+    public void RevisaParentesis(String textoString) {
         
         /*
         Este metodo se encarga de revisar que los
@@ -41,13 +39,13 @@ public class Tokenize {
         tira un mensaje de error.
         */
 
-        //Se declaran variables
+        // Se declaran variables
         int parentesisAbierto = 0; int parentesisCerrado = 0;
 
-        //Ciclo for para verificar numero de parentesis
+        // Ciclo for para verificar numero de parentesis
         for (int ContadorGeneral = 0; ContadorGeneral < textoString.length(); ContadorGeneral++) {
-            //Verifica si es parentesis que abre o cierra, para
-            //sumarlo al contador respectivo.
+            // Verifica si es parentesis que abre o cierra, para
+            // Sumarlo al contador respectivo.
 
             if (textoString.charAt(ContadorGeneral) == '(' ) {
                 //Agrega al contador el numero de parentesis abiertos.
@@ -78,35 +76,28 @@ public class Tokenize {
         /*  Este metodo se encarga de realizar los procesos
             necesarios para poder tokenizar.*/
 
-        //Se define el String que ingresa usuario
+        // Se define el String que ingresa usuario
         String elStringUtilizadoEnElPrograma = ""; 
         System.out.print(">> ");
-
-        //Mientras se siga ingresando informacion, se continua.
-        while(elEscannerXDXD.hasNextLine()) {
             
-            elStringUtilizadoEnElPrograma = elEscannerXDXD.nextLine().trim().toUpperCase();
-            //Se define if para verificar si se quiere salir
-            if ( elStringUtilizadoEnElPrograma.equals("(QUIT)") ) {
-                v.MensajeSalida();
-                break;
-            }
+        elStringUtilizadoEnElPrograma = elEscannerXDXD.nextLine().trim().toUpperCase();
+        System.out.println(elStringUtilizadoEnElPrograma);
 
-            //TryCatch que utiliza metodo recursivo para revisar parentesis 
-            try { 
+        // TryCatch que utiliza metodo recursivo para revisar parentesis 
+        try { 
+            // Tokeniza y evalua lo intresado, lo agrega a bitcoins
+            
+            RevisaParentesis(elStringUtilizadoEnElPrograma);
+            BitCoins = procesosDeTokenizacion(elStringUtilizadoEnElPrograma);
+        }   
 
-                //Tokeniza y evalua lo intresado, lo agrega a bitcoins
-                RevisaParentesis(elStringUtilizadoEnElPrograma);
-                BitCoins = procesosDeTokenizacion(elStringUtilizadoEnElPrograma);
-            }   
-
-            catch (Exception e) {
-                //Tira excepcion si no cumple con lo q se desea 
-                v.Error();
-            }
-
-            System.out.print("$ ");
+        catch (Exception e) {
+            // Tira excepcion si no cumple con lo q se desea 
+            v.Error();
         }
+
+        System.out.print(">> ");
+
         return BitCoins;
 
     }
@@ -115,8 +106,8 @@ public class Tokenize {
 
     /**
      * procesosDeTokenizacion
-     * @param String s
-     * @return n/a
+     * @param String ingreso del usuario
+     * @return Vector<String> 
      **/
 
     private Vector<String> procesosDeTokenizacion(String StringATokenizar) {
@@ -126,7 +117,7 @@ public class Tokenize {
                 los Strings analizados por usuario. */
 
 
-        //Se declaran variables
+        //Se declara variable
         int i = 0;
 
         //Ciclo if con la longitud analizada.
@@ -158,9 +149,11 @@ public class Tokenize {
                 BitCoins.add(StringATokenizar.substring(i,ContadorUtilizado));
             }
             
+            // Iguala el contador con la variable i definida.
             i = ContadorUtilizado;
         }
-        //Devuelve los BitCoins (son de tipo Vector<String>)
+
+        // Devuelve los BitCoins (son de tipo Vector<String>)
         return BitCoins;
     }
 

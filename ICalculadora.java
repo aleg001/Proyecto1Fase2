@@ -9,16 +9,52 @@
 ********************************************************/
 
 import java.util.Vector;
+import java.util.Hashtable;
 
 public interface ICalculadora {
 
+
+    // Metodos para realizar procesos de calculadora, posteriormente implementados en calculadora.
+    
+    
+    /**
+     * @param int x
+    * @param int y
+    * @return int Resultado de la suma
+    */
     public int suma(int x, int y);
+
+    /**
+     * @param int x
+    * @param int y
+    * @return int Resultado de la resta
+    */
     public int resta(int x, int y);
+
+    /**
+     * @param int x
+    * @param int y
+    * @return int Resultado de la multiplicacion
+    */
     public int multiplicacion(int x, int y);
+
+    /**
+     * @param int x
+    * @param int y
+    * @return int Resultado de la division
+    */
     public int division(int x, int y);
 
-    public int operar(Stack x);//operar recibe un stack en formato postfix, y lo opera para devolver un entero que es igual al valor total de la operación
-
-    public int decode(Vector<String> fila);//función que se encarga de leer el archivo y decodificar cada línea para realizar las operaciones de cada una
+    /**
+     * @param Stack x
+    * @return int Resultado de operacion
+    */
+    public int operar(Stack x, Hashtable<String, String> var);//operar recibe un stack en formato postfix, y lo opera para devolver un entero que es igual al valor total de la operación
+   
+    /**
+     * @param Vector<String> fila
+    * @return int Resultado decodificado
+    */
+    public int decode(Vector<String> fila,Hashtable<String, String> var);//función que se encarga de leer el archivo y decodificar cada línea para realizar las operaciones de cada una
 
 }

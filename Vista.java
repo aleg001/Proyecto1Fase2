@@ -9,7 +9,7 @@
 
 /**
  * Metodos de Vista
- * @author Alejandro Gomez
+ * @author Alejandro Gomez, Ana Paola, Maco Jurado
  * */
 
 import java.util.Scanner;
@@ -21,7 +21,6 @@ public class Vista {
     /**
      * Metodo constructor
      * @param n/a
-     * @author Alejandro Gomez
      * @return n/a
      **/
 
@@ -32,7 +31,6 @@ public class Vista {
     /**
      * Metodo de opciones
      * @param n/a
-     * @author Alejandro Gomez
      * @return n/a
      **/
 
@@ -62,7 +60,6 @@ public class Vista {
     /**
      * Metodo de Bienvenida
      * @param n/a
-     * @author Alejandro Gomez
      * @return n/a
      **/
     public void Welcome(){
@@ -73,7 +70,6 @@ public class Vista {
     /**
      * Error
      * @param n/a
-     * @author Alejandro Gomez
      * @return n/a
      **/
 
@@ -85,7 +81,6 @@ public class Vista {
     /**
      * FileInput
      * @param n/a
-     * @author Alejandro Gomez
      * @return n/a
      **/
     public void FileInput(){
@@ -96,7 +91,6 @@ public class Vista {
     /**
      * FileOption
      * @param n/a
-     * @author Alejandro Gomez
      * @return n/a
      **/
 
@@ -125,50 +119,148 @@ public class Vista {
     /**
      * MensajeSalida
      * @param n/a
-     * @author Alejandro Gomez
      * @return n/a
      **/
 
     public void MensajeSalida(){
-        System.out.println("Gracias por usar el interprete de Lisp");
+        System.out.println("\n\nGracias por usar el interprete de Lisp");
         System.out.println("Autores:");
-        System.out.println("Paola de Leon");
-        System.out.println("Marco Jurado");
-        System.out.println("Alejandro Gomez");
+        System.out.println(" - Paola de Leon");
+        System.out.println(" - Marco Jurado");
+        System.out.println(" - Alejandro Gomez");
         
     }
     
     /**
      * LectorArchivo
      * @param String name
-     * @author Alejandro Gomez
      * @return n/a
      **/
 
     public void LectorArchivo(String name){
-        System.out.println("Leyendo el archivo... "+name+".txt");
+        System.out.println("Leyendo el archivo... " + name + ".txt");
     }
     
     /**
-     * Error
+     * Simbolo1
      * @param n/a
-     * @author Alejandro Gomez
      * @return n/a
      **/
 
     public void Simbolo1(){
         System.out.println(">> ");
     }
+    /**
+     * Cuidaoo
+     * @param n/a
+     * @return n/a
+     **/
 
     public void Cuidaoo(){
         System.out.println("Cuidado... :o");
     }
 
     /**
+     * Exepsion
+     * @param n/a
+     * @return n/a
+     **/
+
+    public void Exepsion(){
+        System.out.println("Revisa otra vez lo que escriste :s");
+    }
+
+    /**
+     * VariableExistente
+     * @param n/a
+     * @return n/a
+     **/
+    public void VariableExistente(){
+        System.out.println("Cuidado... Esa variable ya existe");
+    }
+
+    /**
+     * OperadorInvalido
+     * @param n/a
+     * @return n/a
+     **/
+    public void OperadorInvalido(){
+        System.out.println("Uy... Has ingresado un operador incorrecto");
+    }
+
+    /**
+     * FuncionExistente
+     * @param n/a
+     * @return n/a
+     **/
+    public void FuncionExistente(){
+        System.out.println("Esa funcion ya existe... :/");
+    }
+
+    /**
+     * IngresoTexto
+     * @param n/a
+     * @return n/a
+     **/
+    public void IngresoTexto(){
+        System.out.println("Ingrese todo el codigo en una sola linea de texto");
+    }
+
+    /**
+     * Quit
+     * @param n/a
+     * @return n/a
+     **/
+    public void Quit(){
+        System.out.println("Recuerde escribir (quit) para salir del programa");
+    }
+
+    /**
+     * MensajeTexto
+     * @param n/a
+     * @return n/a
+     **/
+    public void MensajeTexto(){
+        System.out.print(">>");
+    }
+
+    /**
+     * Ascii
+     * @param n/a
+     * @return n/a
+     **/
+    public void Ascii(){
+        System.out.println(" _       _________ _______  _______ ");
+        System.out.println("( ()      (__   __/(  ____ )(  ____ )");
+        System.out.println("| (         ) (   | (    ()| (    )|");
+        System.out.println("| |         | |   | (_____ | (____)|");
+        System.out.println("| |         | |   (_____  )|  _____)");
+        System.out.println("| |         | |         ) || (      ");
+        System.out.println("| (____/)___) (___/)____) || )      ");
+        System.out.println("(_______/)_______/)_______)|/      ");
+        System.out.println("                                    ");
+
+    }
+
+    /**
+     * MetodosInicioPrograma
+     * @param n/a
+     * @return n/a
+     **/
+    public void MetodosInicioPrograma(){
+        Ascii();
+        Welcome();
+        IngresoTexto();
+        Quit();
+    }
+
+    public void ImpresionXD(String output){
+        System.out.println("Lo ingresado corresponde a: ");
+        System.out.println(output);
+    }
+    /**
      * RevisaParentesis
      * @param String s
-     * @author Jose Gomez
-     * @author Ana Molina
      * @return n/a
      **/
     public void RevisaParentesis(String textoString) throws Exception {
@@ -198,26 +290,5 @@ public class Vista {
             System.out.println("Cuidado... Los parentesis no coinciden :o");
     }
 
-    public void Exepsion(){
-        System.out.println("Revisa otra vez lo que escriste :s");
-    }
-
-    public void VariableExistente(){
-        System.out.println("Cuidado... Esa variable ya existe");
-    }
-
-    public void OperadorInvalido(){
-        System.out.println("Uy... Has ingresado un operador incorrecto");
-    }
-    public void FuncionExistente(){
-        System.out.println("Esa funcion ya existe... :/");
-    }
-
-    public void IngresoTexto(){
-        System.out.println("Ingrese todo el codigo en una sola linea de texto");
-    }
-    public void Quit(){
-        System.out.println("Recuerde escribir quit para salir del programa");
-    }
 
 }

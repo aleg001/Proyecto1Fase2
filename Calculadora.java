@@ -1,4 +1,5 @@
 import java.util.Vector;
+import java.util.Hashtable;
 
 /***************************************************************
 * Calculadora.java
@@ -17,8 +18,7 @@ import java.util.Vector;
 */
 
 
-public class Calculadora implements ICalculadora 
-{
+public class Calculadora implements ICalculadora {
   //-------------------------------------------------Atributos--------------------------------------
 
   int numerox; 
@@ -88,129 +88,138 @@ public class Calculadora implements ICalculadora
   * @return int Resultado de la operacion realizada
   */
   @Override
-  public int operar(Stack x) {
+  public int operar(Stack x, Hashtable<String, String> variables) {
       // Proceso de operar que toma los datos del Stack y realiza las operaciones 
       // identificadas. Devuelve un resultado de la operación
 
-      if(x.size() == 0){
+      if (x.size() == 0) {
           //El stack está vacio... no hay nada que operar. Devuelve un 0 para indicar el resultado. 
           return 0;
       }
 
       Stack procedimiento = new Stack(); //Stack para realizar los procesos de operacion
 
-      while(x.empty() != true){
+      while (x.empty() != true) {
           //Sigue operando hasta que el stack esté vacio y no haya mas por hacer
 
           //Las tres posiciones numericas basicas a utliizar en todo momento. Solo se tienen 3 pues solo hace una operacion a la vez.
       
 
-          try{
-              elemento_pila = x.pop().toString();
-          } catch(Exception C){
-              System.out.println("OW NO. Un error ha ocurrido. Favor contactar a su proveedor del codigo mas cercano. Osea... Marco Jurado");
-          }
+        try {
+            elemento_pila = x.pop().toString();
+        } catch (Exception C) {
+            System.out.println("Error de sistema.");
+        }
 
-          switch(elemento_pila){
+          switch (elemento_pila) {
               //Diferentes casos que pueden ocurrir. Se realiza la operacion correcta en el caso de encontrar el operador.
+              case "0":
+                  procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
+                  break;
 
               case "1":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+
               case "2":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+
               case "3":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+
               case "4":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+
               case "5":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+
               case "6":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+                  
               case "7":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+
               case "8":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+
               case "9":
                   procedimiento.push(elemento_pila); //agrega el numero a la pila de procedimiento hasta encontrar operador
-                  System.out.println("Se ha añadido correctamente " + elemento_pila + " al stack");
                   break;
+
               case "+": 
                   //Caso especial que sea un operador de suma. Ejecuta el método de suma
+
                   try{
                       numerox = Integer.parseInt(procedimiento.pop());
 
-                      numeroy = Integer.parseInt(procedimiento.pop());
-                  }catch(Exception e){ System.out.println("Error! Falla total.");} 
+                  } catch (Exception e) {
+                    System.out.println("Error! Falla total. CALCU X");
+                  } 
                   
+                  try{                    
+                    numeroy = Integer.parseInt(procedimiento.pop());
+                    } catch (Exception e) {
+ 
+                  System.out.println("Error! Falla total. CALCU  YY");
+                } 
                   resultadoxy = suma(numerox, numeroy);
                   String resultadoxy_string = String.valueOf(resultadoxy);
                   procedimiento.push(resultadoxy_string);
-                  System.out.println("La suma de los numeros " + numerox + " y " + numeroy + " se ha realizado.");
-                  System.out.println("El resultado " + resultadoxy + " se ha guardado en el stack.");
                   break;
+
               case "-": 
                   //Caso especial que sea un operador de resta. Ejecuta el método de suma
-                  try{
+                  try {
                       numerox = Integer.parseInt(procedimiento.pop());
 
                       numeroy = Integer.parseInt(procedimiento.pop());
-                  }catch(Exception e){ System.out.println("Error! Falla total.");} 
+                  } catch (Exception e) { 
+                      System.out.println("Error! Falla total.");
+                    } 
                   
                   resultadoxy = resta(numerox, numeroy);
                   String resultadoxy_string_2 = String.valueOf(resultadoxy);
                   procedimiento.push(resultadoxy_string_2);
-                  System.out.println("La resta de los numeros " + numerox + " y " + numeroy + " se ha realizado.");
-                  System.out.println("El resultado " + resultadoxy + " se ha guardado en el stack.");
                   break;
+
               case "*": 
                   //Caso especial que sea un operador de multiplicacion. Ejecuta el método de suma
-                  try{
+                  try {
                       numerox = Integer.parseInt(procedimiento.pop());
 
                       numeroy = Integer.parseInt(procedimiento.pop());
-                  }catch(Exception e){ System.out.println("Error! Falla total.");} 
+                  } catch (Exception e) {
+                      System.out.println("Error! Falla total.");
+                    } 
                   
                   resultadoxy = multiplicacion(numerox, numeroy);
                   String resultadoxy_string_3 = String.valueOf(resultadoxy);
                   procedimiento.push(resultadoxy_string_3);
-                  System.out.println("La multiplicacion de los numeros " + numerox + " y " + numeroy + " se ha realizado.");
-                  System.out.println("El resultado " + resultadoxy + " se ha guardado en el stack.");
                   break;
+
               case "/": 
-                  //Caso especial que sea un operador de division. Ejecuta el método de suma
+                  // Caso especial que sea un operador de division. Ejecuta el método de suma
                   try{
                       numerox = Integer.parseInt(procedimiento.pop());
 
                       numeroy = Integer.parseInt(procedimiento.pop());
-                  }catch(Exception e){ System.out.println("Error! Falla total.");} 
+                  } catch (Exception e) { 
+                      System.out.println("Error! Falla total. uwu");
+                    } 
                   
                   resultadoxy = division(numerox, numeroy);
                   String resultadoxy_string_4 = String.valueOf(resultadoxy);
                   procedimiento.push(resultadoxy_string_4);
-                  System.out.println("La division de los numeros " + numerox + " y " + numeroy + " se ha realizado.");
-                  System.out.println("El resultado " + resultadoxy + " se ha guardado en el stack.");
-                  break;
+                    break;
 
           }
-
-          
-
 
       }
 
@@ -218,21 +227,32 @@ public class Calculadora implements ICalculadora
       return fin;       
   }
 
-  public int decode(Vector<String> fila){
+  public int decode (Vector<String> fila, Hashtable<String, String> variablesEntorno) {
 
-    //Enviar esos characteres a un nuevo stack. 
+    // Enviar esos characteres a un nuevo stack. 
     Stack pila_datos = new Stack();
 
-    for(int i = 0; i < fila.size()-1; i++){  //POSIBLE ERROR
-      //Recorre todo el vector para meterlo al nuevo Stack ignorando los parentesis
-      pila_datos.push(fila.get(i)); //mete cada dato a la pila para tener el orden del Stack Fifo.
+    // Recorrer todo el vector
+    for (int i = 0; i < fila.size()-1; i++) {
+      // Si hay una letra
+        if(!fila.get(i).matches("[0-9]+")) {
+          // Buscar entre las variables
+          if(variablesEntorno.containsKey(fila.get(i))) {
+            fila.set(i, variablesEntorno.get(fila.get(i)));
+          }
+        }
+  
     }
 
-    int resultado_operar = operar(pila_datos);
+    for (int i = 0; i < fila.size()-1; i++) { 
+        // Recorre todo el vector para meterlo al nuevo Stack ignorando los parentesis
+        String data = fila.get(i); // Mete cada dato a la pila para tener el orden del Stack Fifo.
+        pila_datos.push(data);
+    }
+
+    int resultado_operar = operar(pila_datos, variablesEntorno);
 
     return resultado_operar;
   }
-
-  
 
 }
