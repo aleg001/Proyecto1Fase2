@@ -16,6 +16,7 @@
  */
 
  // Imports utilizados
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -35,107 +36,161 @@ public class Condiciones {
      */
     public String Cond (Vector<String> condiciones, Hashtable<String, String> Variables, Calculadora calcu ) {
         
-        // Se declaran variables e instancias
-        int i = 0;
-        boolean isEq = false;
-        Vista v = new Vista();
-        String resultado = " ";
-        boolean invalido = false;
-        boolean approved = false; // Boolean que indica si la condición de cumple
-        String signo = condiciones.get(3); // equals, > o <
+        // Propiedades
+      int i = 0;
+      Vista v = new Vista();
+      String resultado = "";
+      boolean approved = false; // Boolean que indica si la condición de cumple
+      boolean invalido = false;
+      String ValoresEnList = "";
+      String signo = condiciones.get(3); // equals, > o <
+      System.out.println(signo + "SIIISISISISISISGNO");
 
-        // Cuando el valor después del signo es una variable se busca entre Hashtable general.
-        if (!condiciones.get(4).matches("[0-9]+")) { 
-            // Pos 4 del vector es diferente a un número
-            // Busca si existe una variable
-            if (Variables.containsKey(condiciones.get(4))) {
-                // Se asigna el valor del vector a la variable en esa pos
-                condiciones.set(4, Variables.get(condiciones.get(4)));
-            }
-        }
+      // Verificar si pos 3 es una variable
+      if (!condiciones.get(4).matches("[0-9]+")) { 
+          // Busca si existe una variable
+          if (Variables.containsKey(condiciones.get(4))) {
+              // Se asigna el valor de variable al vector.
+              condiciones.set(4, Variables.get(condiciones.get(4)));
+          }
+      }
+      // Verificar si pos 4 es una variable
+      if (!condiciones.get(5).matches("[0-9]+")) {
+         // Busca si existe una variable
+          if (Variables.containsKey(condiciones.get(5))) {
+             // Se asgina el valor de variable al vector.
+              condiciones.set(5, Variables.get(condiciones.get(5)));
+          }
+      }
 
-        // Cuando el valor después de primer valor después del signo es una variable se busca entre Hashtable general.
-        if (!condiciones.get(5).matches("[0-9]+")) {
-            // Pos 5 del vector no es número, por lo que sería una variable.
-            if (Variables.containsKey(condiciones.get(5))) {
-                condiciones.set(5, Variables.get(condiciones.get(5)));
-            }
-        }
+      // Segun valor de signo evaluar.
+      switch ( signo ) {
+          // Comparar
+          case "<":
+              if (Integer.parseInt(condiciones.get(4)) < Integer.parseInt(condiciones.get(5))) {
+                  approved = true;
+              }
+              break;
+              
+          case ">":
+              if (Integer.parseInt(condiciones.get(4)) > Integer.parseInt(condiciones.get(5))) {
+                  approved = true;
+              }
+              break;
 
-        // Según valor de signo evaluar.
-        switch ( signo ) {
+          case "EQ":
+              if ((condiciones.get(4).toString().equals((condiciones.get(5)).toString()))) {
+                  approved = true;
+              }
+              break;
+         
+         case "LIST":
+     
+               // Se crea un nuevo arraylist
+               ArrayList<String> ValoresAlmacenados = new ArrayList<String>();
 
-            // Comparar
-            case "<":
-                // Se efectuan las operaciones correspondientes para menor que
-                if (Integer.parseInt(condiciones.get(4)) < Integer.parseInt(condiciones.get(5))) {
-                    approved = true;
+               // Ciclo for para la cantidad de elementos en lista.
+               for ( int contador = 3; contador < condiciones.size()-2; contador++) {
+                    // Por cada elemento de la lista, se agregan al array.
+                    //elementos[contador] = condiciones.get(contador); // No es Variables
+                    if ( condiciones.get(contador) != ")" ) {
+                        ValoresAlmacenados.add(condiciones.get(contador)); // Se almacena el contenido del list si no es un parentesis
+                    }
+               }
+
+               if ( ValoresAlmacenados.size() != 0 ) {
+                  approved = true;
+                  ValoresEnList = ValoresAlmacenados.toString(); // El valor de la lista se convierte en un String.
+               }
+               
+              break;
+         
+         case "ATOM":
+            int alert = 0; // No se usa
+            int sign = -1;
+            String temp = condiciones.get(3);  
+            if (condiciones.size() == 4) {
+                //Tiene exactamente la cantidad requerida por el atom
+                approved = true;
+            } else if(temp == "("){
+                //Revisa la posibilidad de que sea una lista vacia 
+                for(int l = 3; l < condiciones.size()-1; l++){
+                    //Recorre el resto del string encontrando el parentesis que cierra
+                    String temporal2 = condiciones.get(l);
+                    if(temporal2 == ")"){
+                        alert += 1;
+                        sign  = l - 3;
+                        if(sign == 1){
+                           approved = true;
+                        } else {
+                           approved = false;
+                        }
+                    }
                 }
-                break;
+
+
+            } else if(temp == "'" || temp == "LIST") { 
+                //Con el signo de lista se busca que sea vacia
+                String temporal3 = condiciones.get(5);
+               if(temporal3 == ")"){
+                  approved = true;
+               }else{
+                  approved = false;
+               }
                 
-            case ">":
-                // Se efectuan las operaciones correspondientes para el mayor que
-                if (Integer.parseInt(condiciones.get(4)) > Integer.parseInt(condiciones.get(5))) {
-                    approved = true;
-                }
-                break;
-
-            case "EQ":
-                // Se efectuan las operaciones correspondientes para el caso de equals
-                isEq = true;
-                if ((condiciones.get(4).toString().equals((condiciones.get(5)).toString()))) {
-                    approved = true;
-                }
-                break;
-
-            default:
-                // Se efectuan las operaciones correspondientes para caso general.
-                if (approved==false && isEq == false) {
-                    v.OperadorInvalido();
-                    invalido = true;
-                }
-                
-        }
-        
-        // Verificar que no existe ningún error.
-        if ( invalido == false ) {
-            // Si se cumple a condición
-            if ( approved == true ) {
-                Vector<String> ifTrue = new Vector<String>( condiciones );
-    
-                // Borra la condición del vector por que si se cumplió
-                for (i = 0; i < 7; i++) {
-                    ifTrue.remove(0);
-                }
-    
-                // Borra el else
-                for (i = 0; i < ifTrue.size(); i++) {
-                    ifTrue.remove(5);
-                }
-                
-                // Opera
-                int result = calcu.decode(ifTrue, Variables);
-                resultado = Integer.toString(result);
-    
             } else {
-    
-                // Cuando no se cumple la condición
-                Vector<String> ifFalse = new Vector<String>(condiciones);
-    
-                // Borra condición true
-                for (i = 0; i < 12; i++) {
-                    ifFalse.remove(0);
-                }
-    
-                ifFalse.remove(5);
-                
-                // Opera
-                int result = calcu.decode(ifFalse, Variables);
-                resultado = Integer.toString(result);
+               approved = false;
             }
-        }
-        // Devuelve el resultado
-        return resultado;
-    }
+                break;
+
+         default:
+            if (approved==false) {
+               v.OperadorInvalido();
+               invalido = true;
+            }
+            break;
+              
+      }
+      
+      // Verificar que no existe ningún error.
+      if ( invalido == false ) {
+         // Si se cumple a condición
+         if ( approved == true ) {
+             Vector<String> ifTrue = new Vector<String>( condiciones );
+ 
+             // Borra la condición del vector por que si se cumplió
+             for (i = 0; i < 7; i++) {
+                 ifTrue.remove(0);
+             }
+ 
+             // Borra el else
+             for (i = 0; i < ifTrue.size(); i++) {
+                 ifTrue.remove(5);
+             }
+             
+             // Opera
+             int result = calcu.decode(ifTrue, Variables);
+             resultado = Integer.toString(result);
+ 
+         } else {
+ 
+             // Cuando no se cumple la condición
+             Vector<String> ifFalse = new Vector<String>(condiciones);
+ 
+             // Borra condición true
+             for (i = 0; i < 12; i++) {
+                 ifFalse.remove(0);
+             }
+ 
+             ifFalse.remove(5);
+             
+             // Opera
+             int result = calcu.decode(ifFalse, Variables);
+             resultado = Integer.toString(result);
+         }
+     }
+     // Devuelve el resultado
+      return resultado;
+   }
 
 }

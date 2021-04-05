@@ -26,6 +26,10 @@ public class Funciones {
     private static Hashtable<String, Integer> Parametros; // Hashtable con parametros de función
     private static Hashtable<String, Vector<String>> InstruccionesDeFuncion; // Hashtable con cuerpo de función
 
+    public Funciones ( ) {
+        Parametros = new Hashtable<>();
+        InstruccionesDeFuncion = new Hashtable<>();
+    }
     // Getters
     public static Hashtable<String, Vector<String>> getBody() { return InstruccionesDeFuncion; }
     public static Hashtable<String, Integer> getParametros() { return Parametros; }
@@ -38,14 +42,14 @@ public class Funciones {
 
     /**
      * Método para declarar una nueva función.
-     * @throws Excepción cuando la función ya existe en la base de datos.
+     * @param TikToks Vector que contiene información de la linea.
      */
     
     public String defun(Vector<String> TikToks) {
         
-        String name = "";
+        String name = " ";
         Vista v = new Vista();
-        
+
         // Revisar si existe una función con el mismo nombre
         if (Parametros.containsKey(name)) {
             // Si existe, tirar una excepción
@@ -73,7 +77,7 @@ public class Funciones {
             }
     
             // Se obtiene el numero de parametros totales
-            int parametrosUtilizados = VariableFinal - VariableInicial - 1;
+            Integer parametrosUtilizados = VariableFinal - VariableInicial - 1;
     
             // Se agregan al vector nuevo las instrucciones de funciones
             for (i = VariableFinal + 1; i < TikToks.size() - 1; i++) {
@@ -89,6 +93,69 @@ public class Funciones {
         return name;
     }
 
+    /**
+     * Método default
+     * @param line
+     * @param calcu
+     * @param Variables
+     * @return
+     * @throws Exception
+     */
+    public String existingFun(Vector<String> line, Calculadora calcu, Hashtable<String, String> Variables) throws Exception {
+        
+        Vector<String> cuerpoFuncion = new Vector<>();
+        Vector<String> param = new Vector<>();
+        String secondElement = line.get(1);
+        int cantParam = line.size() - 5;
+        boolean invalid = false;
+        Vector<String> cuerpoTemp;
+        Vista v = new Vista();
+        String result = "";
+        int params = 0;
+        int in = 0;
+        int i = 0;
 
-    
+        // Si el tamaño es 3 significa que solo debe imprimir el contenido dentro de los paréntesis.
+        if (line.size() == 3) {
+            return v.printLISP(line, Variables);
+        }
+
+        // Verificar si en los parametros hay alguna función con el nombre indicado.
+        if (!Parametros.containsKey(secondElement)) {
+            // Excepción porque no está definida la función
+            v.FuncionExistente();
+            invalid = true;
+        } else {
+            // Obtener información de función
+            params = Parametros.get(secondElement);
+            cuerpoFuncion = InstruccionesDeFuncion.get(secondElement);
+            
+            // Añadir valores al vector de los parametros
+            for (i = 0; i < cantParam; i++) {
+                param.add(line.get(3 + i));
+            }
+        }
+
+        // Revizar que en el if pasado no hubiera ningún error.
+        if (invalid == false) {
+            // Revizar cantidad valores pasadas sean iguales a la cantidad de los parámetos de la función.
+            if (params != cantParam){
+                // Si no es igual entonces no se pasaron todos los parametros y hay un error.
+                v.ArgumentosInvalido();
+            } else {
+                // Sustituir variables en parámetros y ejecutar función.
+                cuerpoTemp = new Vector<>(cuerpoFuncion);
+                for (i = 0; i < cuerpoFuncion.size(); i++) {
+                    if(!cuerpoTemp.get(i).matches("[0-9(+-/*)]+")) {
+                        cuerpoTemp.set(i, param.get(in));
+                        in++;
+                    }
+                }
+                int resultI = calcu.decode(cuerpoTemp, Variables);
+                result = Integer.toString(resultI);
+            }
+        }
+
+        return result;
+    }
 }

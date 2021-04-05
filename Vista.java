@@ -7,6 +7,9 @@
 * Ultima modificacion: 6/02/21
 ***************************************************************/
 
+import java.util.Vector;
+import java.util.Hashtable;
+
 /**
  * Metodos de Vista
  * @author Alejandro Gomez, Ana Paola, Maco Jurado
@@ -17,6 +20,26 @@ import java.util.Scanner;
 
 public class Vista {
     Scanner scan;
+
+    /**
+     * Metodo constructor
+     * @param n/a
+     * @return n/a
+     **/
+    public String printLISP ( Vector<String> TikToks, Hashtable<String, String> variablesSistema) {
+        String Variables = TikToks.get(2);
+
+        if (Variables.equals(")"))
+            Variables = TikToks.get(1);
+
+        // Cambiar
+        if (Variables.matches("[0-9]+") )
+            return Variables;
+            
+        else
+            // Saber
+            return  variablesSistema.getOrDefault(Variables, "La variable no existe en su programa! Error.");
+    }
 
     /**
      * Metodo constructor
@@ -252,6 +275,10 @@ public class Vista {
         Welcome();
         IngresoTexto();
         Quit();
+    }
+
+    public void ArgumentosInvalido(){
+        System.out.println("Cuidado... la cantidad de argumentos es invalida");
     }
 
     public void ImpresionXD(String output){

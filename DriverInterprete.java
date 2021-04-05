@@ -127,13 +127,16 @@ public class DriverInterprete {
                     break;
     
                 case "EQ":
-                   
+
                     output = pre.Predica(tokens, Vars, calcu);
                     break;
-                    
+
+                case "PRINT":
+                    output = v.printLISP(tokens, Vars);
+                    break;                    
                     
                 default:
-                    System.out.println(" Default ");
+                    output = fun.existingFun(tokens, calcu, Vars);
                     break;
                     
                 }

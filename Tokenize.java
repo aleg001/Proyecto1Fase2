@@ -81,7 +81,6 @@ public class Tokenize {
         System.out.print(">> ");
             
         elStringUtilizadoEnElPrograma = elEscannerXDXD.nextLine().trim().toUpperCase();
-        System.out.println(elStringUtilizadoEnElPrograma);
 
         // TryCatch que utiliza metodo recursivo para revisar parentesis 
         try { 
