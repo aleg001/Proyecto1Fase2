@@ -9,7 +9,8 @@
 * Ultima modificacion: 6/02/21
 ***************************************************************/
 /**
- * Calculadora.java Interface
+ * Quote.java 
+ * Clase para imprimir
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado

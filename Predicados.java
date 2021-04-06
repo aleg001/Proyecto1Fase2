@@ -9,7 +9,7 @@
  ***************************************************************/
 
 /**
- * Calculadora.java Interface
+ * Predicados.java Interface
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado

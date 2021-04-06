@@ -12,7 +12,13 @@
 ********************************************************/
 
 import java.util.Vector;
-
+/**
+ * Stack.java
+ * Clase usada para los procesos de stack
+ * @author Jose Hernández
+ * @author Ana Molina
+ * @author Antonio Jurado
+*/
 public class Stack implements IStack<String> {
 
     //----------------------------------------------------- Atributos ----------------------------------------------------------

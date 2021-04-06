@@ -11,6 +11,13 @@
 import java.util.Vector;
 import java.util.Hashtable;
 
+/**
+ * iCalculadora.java (interfaz)
+ * Interfaz de calculadora
+ * @author Jose Hernández
+ * @author Ana Molina
+ * @author Antonio Jurado
+*/
 public interface ICalculadora {
 
 

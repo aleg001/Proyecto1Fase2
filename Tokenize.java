@@ -14,6 +14,13 @@
 import java.util.Vector;
 import java.util.Scanner;
 
+/**
+ * Tokenize.java
+ * Procesos pertinentes para tokenizar.
+ * @author Jose Hernández
+ * @author Ana Molina
+ * @author Antonio Jurado
+*/
 
 public class Tokenize {
 

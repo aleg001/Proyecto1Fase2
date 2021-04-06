@@ -8,7 +8,7 @@
 ***************************************************************/
 
 /**
- * Calculadora.java Interface
+ * iStack.java Interface
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado

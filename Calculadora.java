@@ -11,7 +11,8 @@ import java.util.Hashtable;
 ***************************************************************/
 
 /**
- * Calculadora.java Interface
+ * Calculadora.java 
+ * Clase Calculadora donde se implementa la interfaz y se realizan los procesos correspondientes.
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado

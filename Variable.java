@@ -11,7 +11,8 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 /**
- * Calculadora.java Interface
+ * Variable.java 
+ * Clase para manejo de variables.
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado
