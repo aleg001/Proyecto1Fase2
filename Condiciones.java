@@ -1,6 +1,6 @@
 
 /***************************************************************
- * Calculadora.java
+ * Condiciones.java
  * Autor: UVG
  * Universidad del Valle de Guatemala
  *
@@ -44,8 +44,7 @@ public class Condiciones {
       boolean invalido = false;
       String ValoresEnList = "";
       String signo = condiciones.get(3); // equals, > o <
-      System.out.println(signo + "SIIISISISISISISGNO");
-
+      
       // Verificar si pos 3 es una variable
       if (!condiciones.get(4).matches("[0-9]+")) { 
           // Busca si existe una variable
