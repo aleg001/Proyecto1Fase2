@@ -82,6 +82,3 @@ Predicados
 ```lisp 
 ( cond ( eq 1 2 ) ( + 1 2 ) ( - 1 2 ) )
 ```
-
-Recursividad:
-- [ ] Verificar
