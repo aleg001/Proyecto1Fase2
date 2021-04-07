@@ -9,7 +9,8 @@
 ***************************************************************/
 
 /**
- * Calculadora.java Interface
+ * DriverInterprete.java
+ * Main del programa.
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado
@@ -39,7 +40,7 @@ public class DriverInterprete {
         // Se muestra mensajes de inicio de programa.
         v.MetodosInicioPrograma();
 
-        // Mensake de bienvenida
+        // Mensaje de bienvenida
         v.MensajeTexto();
         
         while (apagar == false) {

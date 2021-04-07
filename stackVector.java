@@ -1,3 +1,17 @@
+/*******************************************************
+* Universidad del Valle de Guatemala
+* Algoritmos y Estructuras de Datos
+* Profesor: Moises Gonzales
+* StackVector.java
+* Autor: Marco Jurado 
+* Autor: Ana Paola de Leon
+* Autor: Alejandro Gómez
+*
+* Fecha creacion: 27/03/21
+* Ultima modificacion: 06/04/21
+********************************************************/
+
+// Se definen imports
 import java.util.Vector;
 
 /**

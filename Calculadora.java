@@ -6,8 +6,8 @@ import java.util.Hashtable;
 * Autor: Ale, Pao, Maco
 * Universidad del Valle de Guatemala
 * Autores: Ale Gomez, Marco Jurado y Ana Molina
-* Fecha creacion: 29/01/21
-* Ultima modificacion: 6/02/21
+* Fecha creacion: 29/03/21
+* Ultima modificacion: 6/04/21
 ***************************************************************/
 
 /**
@@ -183,6 +183,7 @@ public class Calculadora implements ICalculadora {
                       System.out.println("Error! Falla total.");
                     } 
                   
+
                   resultadoxy = resta(numerox, numeroy);
                   String resultadoxy_string_2 = String.valueOf(resultadoxy);
                   procedimiento.push(resultadoxy_string_2);

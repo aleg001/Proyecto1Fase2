@@ -1,17 +1,18 @@
 /***************************************************************
-* Calculadora.java
-* Autor: UVG
+* Vista.java
+* Autor: Ale, Marco, Pao
 * Universidad del Valle de Guatemala
 *
-* Fecha creacion: 29/01/21
-* Ultima modificacion: 6/02/21
+* Fecha creacion: 27/03/21
+* Ultima modificacion: 06/04/21
 ***************************************************************/
 
 import java.util.Vector;
 import java.util.Hashtable;
 
 /**
- * Metodos de Vista
+ * Vista.java
+ * Metodos para la visualización de los prints.
  * @author Alejandro Gomez, Ana Paola, Maco Jurado
  * */
 

@@ -7,14 +7,14 @@
 * Autor: Ana Paola de Leon
 * Autor: Alejandro Gómez
 *
-* Interfaz Calculadora
-* Interface de la calculadora
+* Fecha creacion: 27/03/21
+* Ultima modificacion: 06/04/21
 ********************************************************/
 
 import java.util.Vector;
 /**
  * Stack.java
- * Clase usada para los procesos de stack
+ * Clase usada para los procesos de stack del interprete
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado

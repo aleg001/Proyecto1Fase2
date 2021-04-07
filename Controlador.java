@@ -1,9 +1,19 @@
+/***************************************************************
+* Controlador.java
+* Autor: Marco, Paola, ALejandro
+* Universidad del Valle de Guatemala
+*
+* Fecha creacion: 03/04/21
+* Ultima modificacion: 06/04/21
+***************************************************************/
+
 import java.util.Hashtable;
 import java.util.Vector;
 
 
 public class Controlador {
 
+    // Se declaran instancias de clases
     Quote quote = new Quote();
     Variable var = new Variable();
     Tokenize tok = new Tokenize();
@@ -12,12 +22,15 @@ public class Controlador {
     Condiciones cond = new Condiciones();
     Calculadora calcu = new Calculadora();
 
+ 
+
     Hashtable<String, String> Vars = var.getVariables(); // Vector con variables
 
     public Controlador() {}
 
     /**
-     * Calculadora.java Interface
+     * Controlador.java 
+     * Clase encargada de realizar los procesos del interprete Lisp.
      * @author Jose Hernández
      * @author Ana Molina
      * @author Antonio Jurado
@@ -35,6 +48,7 @@ public class Controlador {
         // Toma el primer valor del vector la cual es la palabra clave que indica qué realizar y llama al método.
         switch ( tokens.get(1) ) {
 
+            // Caso de salida
             case "QUIT":
                 output = "SALIR";
                 v.MensajeSalida();
@@ -75,13 +89,13 @@ public class Controlador {
                 output = quote.toPrint(tokens);
                 break;
             
-            // Cambiar por cond
+            // Cond
             case "COND":
                 
                 output = cond.Cond(tokens, Vars, calcu);
                 break;
 
-            // Cambiar para que sea setq
+            // SetQ
             case "SETQ":
             
                 output = var.setQ(tokens, calcu);
@@ -126,7 +140,8 @@ public class Controlador {
                 break;                    
                 
             default:
-                output = fun.existingFun(tokens, calcu, Vars);
+                // Esta tirando error porque necesita que le entre como argumento el controlador :o
+                output = fun.existingFun(tokens, calcu, Vars); 
                 break;
                 
             }

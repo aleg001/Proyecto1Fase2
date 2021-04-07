@@ -1,23 +1,25 @@
 
 /***************************************************************
-* Calculadora.java
-* Autor: UVG
+* Funciones.java
+* Autor: Ana, Ale, Maco
 * Universidad del Valle de Guatemala
 *
-* Fecha creacion: 29/01/21
-* Ultima modificacion: 6/02/21
+* Fecha creacion: 27/03/21
+* Ultima modificacion: 06/04/21
 ***************************************************************/
 
 /**
+ * Funciones.java
  * Clase para crear funciones
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado
 */
 
+// Imports utilizados
 import java.util.Hashtable;
 import java.util.Vector;
-import java.util.ResourceBundle.Control;
+
 
 
 
@@ -74,7 +76,7 @@ public class Funciones {
             for (i = VariableInicial; i < TikToks.size(); i++) {
                 System.out.println("----------->  El elemento evaluado es:   ..." + TikToks.get(i)+ "...");
                 if (TikToks.get(i).equals(")")) {
-                    System.out.println("----------->  AHUEVO");
+                    // System.out.println("----------->  AHUEVO");
                     VariableFinal = i;
                     break;
                 }

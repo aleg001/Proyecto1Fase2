@@ -1,11 +1,11 @@
 
 /***************************************************************
- * Calculadora.java
+ * Predicados.java
  * Autor: UVG
  * Universidad del Valle de Guatemala
  *
- * Fecha creacion: 29/01/21
- * Ultima modificacion: 6/02/21
+* Fecha creacion: 27/03/21
+* Ultima modificacion: 06/04/21
  ***************************************************************/
 
 /**
@@ -15,6 +15,7 @@
  * @author Antonio Jurado
  */
 
+ // Se definen imports
 import java.util.Hashtable;
 import java.util.Vector;
 import java.util.ArrayList;
@@ -137,6 +138,7 @@ public class Predicados {
       
       // Verificar que no exista un error.
       if (invalido == false) {
+
          // Si se cumple a condición
          if ( approved == true ) {
             // Segun valor de signo evaluar.
@@ -144,11 +146,13 @@ public class Predicados {
                // Comparar
                case "<":
                case ">":
+               // Equals
                case "EQ":
+               // Atom
                case "ATOM":
                   resultado = "T";
                   break;
-               
+               // List
                case "LIST":
                   resultado = ValoresEnList;
                   break;
@@ -161,10 +165,11 @@ public class Predicados {
                case "<":
                case ">":
                case "EQ":
+               // Atom
                case "ATOM":
                   resultado = "NIL";
                   break;
-               
+               // List
                case "LIST":
                   resultado = "Error. No es una lista. "; 
                   break;

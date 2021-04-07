@@ -6,6 +6,8 @@
 * Autor: Clase sección 30 EDS
 *
 * Interfaz calculadora
+* Fecha creacion: 03/04/21
+* Ultima modificacion: 06/04/21
 ********************************************************/
 
 import java.util.Vector;

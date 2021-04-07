@@ -112,16 +112,16 @@ public class Tokenize {
 
     /**
      * procesosDeTokenizacion
+     * Se define un metodo encargado de realizar
+     * los procesos necesarios para tokenizar 
+     * los Strings analizados por usuario.
      * @param String ingreso del usuario
      * @return Vector<String> 
      **/
 
     private Vector<String> procesosDeTokenizacion(String StringATokenizar) {
             
-            /* Se define un metodo encargado de realizar
-                los procesos necesarios para tokenizar 
-                los Strings analizados por usuario. */
-
+  
 
         //Se declara variable
         int i = 0;

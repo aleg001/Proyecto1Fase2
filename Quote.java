@@ -1,21 +1,20 @@
-
-
 /***************************************************************
-* Calculadora.java
-* Autor: UVG
+* Quote.java
+* Autor: Alejandro, Marco, Paola
 * Universidad del Valle de Guatemala
 *
-* Fecha creacion: 29/01/21
-* Ultima modificacion: 6/02/21
+* Fecha creacion: 27/03/21
+* Ultima modificacion: 06/04/21
 ***************************************************************/
 /**
  * Quote.java 
- * Clase para imprimir
+ * Clase para realizar proceso de imprimir, dentro del interprete.
  * @author Jose Hernández
  * @author Ana Molina
  * @author Antonio Jurado
 */
 
+// Se definen imports
 import java.util.Vector;
 
 public class Quote {

@@ -1,10 +1,10 @@
 /***************************************************************
-* Calculadora.java
+* Variable.java
 * Autor: UVG
 * Universidad del Valle de Guatemala
 *
-* Fecha creacion: 29/01/21
-* Ultima modificacion: 6/02/21
+* Fecha creacion: 27/03/21
+* Ultima modificacion: 06/04/21
 ***************************************************************/
 
 import java.util.Hashtable;
@@ -52,7 +52,9 @@ public class Variable {
         if (Variables.containsKey(varname)) {
             // Error cuando existe una variable con ese nombre.
             vista.VariableExistente();
+
         } else {
+
             // Crear un nuevo vector
             Vector<String> v = new Vector<>();
             varname = line.get(2);
@@ -90,6 +92,7 @@ public class Variable {
      */
     public String setQ (Vector<String> line, Calculadora calcu ) {
         
+        // Se declaran variables
         int i = 0;
         String varname = line.get(2);
         String value = line.get(3);
