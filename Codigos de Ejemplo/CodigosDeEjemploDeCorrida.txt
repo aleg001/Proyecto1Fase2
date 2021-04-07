@@ -1,0 +1,35 @@
+Casos aritmeticos
+(+ 5 3)
+(- 3 1)
+(* 4 3) 
+(/ 15 5)
+
+Definicion de variables
+( defvar x 3)
+Operación con variables
+( + x 2 )
+
+Definicion de funciones:
+( defun resta ( a b ) ( - a b ) )
+Utilizar funciones:
+ ( resta ( 1 2 ) ) 
+
+Predicados:
+
+Atom
+(atom 2)
+
+List
+(list 1 2 3)
+
+<
+(> 3 2)
+
+>
+(< 4 2)
+
+Equals
+(eq 0 1)
+
+Cond
+(cond ( eq 1 2 ) ( + 1 2 ) ( - 1 2 ) )
