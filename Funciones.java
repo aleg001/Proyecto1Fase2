@@ -22,10 +22,10 @@ import java.util.Vector;
 
 
 
-
 public class Funciones {
 
     // Propiedades
+
     private static Hashtable<String, Integer> Parametros; // Hashtable con parametros de función
     private static Hashtable<String, Vector<String>> InstruccionesDeFuncion; // Hashtable con cuerpo de función
 
@@ -33,6 +33,7 @@ public class Funciones {
         Parametros = new Hashtable<>();
         InstruccionesDeFuncion = new Hashtable<>();
     }
+    
     // Getters
     public static Hashtable<String, Vector<String>> getBody() { return InstruccionesDeFuncion; }
     public static Hashtable<String, Integer> getParametros() { return Parametros; }
@@ -46,9 +47,10 @@ public class Funciones {
     /**
      * Método para declarar una nueva función.
      * @param TikToks Vector que contiene información de la linea.
+     * @throws Exception
      */
     
-    public String defun(Vector<String> TikToks) {
+    public String defun(Vector<String> TikToks) throws Exception {
         
         String name = " ";
         Vista v = new Vista();
@@ -60,7 +62,6 @@ public class Funciones {
             v.FuncionExistente();
 
         } else {
-            System.out.println(" ----------> Entre al else del defun");
             // Asignar valor a variable de retorno.
             name = TikToks.get(2);
 
@@ -74,9 +75,7 @@ public class Funciones {
             
             // Conocer cuantos parametros tiene la función
             for (i = VariableInicial; i < TikToks.size(); i++) {
-                System.out.println("----------->  El elemento evaluado es:   ..." + TikToks.get(i)+ "...");
                 if (TikToks.get(i).equals(")")) {
-                    // System.out.println("----------->  AHUEVO");
                     VariableFinal = i;
                     break;
                 }
@@ -94,15 +93,16 @@ public class Funciones {
             Parametros.put(name, parametrosUtilizados);
             InstruccionesDeFuncion.put(name, vEctor);
 
-            for(int j = 0; j < vEctor.size() - 1; j++){
-                System.out.println(vEctor.get(j));
-            }
+
             
 
         }
 
         return name;
     }
+
+    // FUncion y parametros -----------> (defun factorial (n)   VERIFICADO SI SIRVE
+    // CUERPO --------> (cond (eq n 0) (1) (* n (factorial (- n 1))))) 
 
     /**
      * Método default
@@ -112,8 +112,8 @@ public class Funciones {
      * @return
      * @throws Exception
      */
-    public String existingFun(Vector<String> line, Calculadora calcu, Hashtable<String, String> Variables, Controlador c)throws Exception {
-        
+    public String existingFun(Vector<String> line, Calculadora calcu, Hashtable<String, String> Variables) throws Exception {
+
         Vector<String> cuerpoFuncion = new Vector<>();
         Vector<String> param = new Vector<>();
         String secondElement = line.get(1);
@@ -140,7 +140,7 @@ public class Funciones {
             // Obtener información de función
             params = Parametros.get(secondElement);
             cuerpoFuncion = InstruccionesDeFuncion.get(secondElement);
-            
+
             // Añadir valores al vector de los parametros
             for (i = 0; i < cantParam; i++) {
                 param.add(line.get(3 + i));
@@ -154,34 +154,16 @@ public class Funciones {
                 // Si no es igual entonces no se pasaron todos los parametros y hay un error.
                 v.ArgumentosInvalido();
             } else {
-                try {
-                    // Sustituir variables en parámetros y ejecutar función.
-                    cuerpoTemp = new Vector<>(cuerpoFuncion);
-                    for (i = 0; i < cuerpoFuncion.size()-1; i++) {
-
-                        System.out.println("empecé el FORRRRR  " + i);
-                        
-                        // Remplaza el valor de variables en vector
-                        if (!cuerpoTemp.get(i).matches("[0-9(+-/*)]+")) {
-                            cuerpoTemp.set(i, param.get(in));
-                            in++;
-
-                            System.out.println("                      SWITCH                    ");
-                        }
-
-                        // int resultI = calcu.decode(cuerpoTemp, Variables);
-                        // result = Integer.toString(resultI);
-                        
-                        // for todos los elementos del vector llamar al controlador y que evalue.
-                        c.controlar(cuerpoTemp);
-
-                        System.out.println("TERMINEEEEEEEEEEEEEEE el FORRRRR  " + i);
+                // Sustituir variables en parámetros y ejecutar función.
+                cuerpoTemp = new Vector<>(cuerpoFuncion);
+                for (i = 0; i < cuerpoFuncion.size(); i++) {
+                    if(!cuerpoTemp.get(i).matches("[0-9(+-/*)]+")) {
+                        cuerpoTemp.set(i, param.get(in));
+                        in++;
                     }
-                    
-                } catch (Exception e) {
-                    v.Error();
                 }
-                
+                int resultI = calcu.decode(cuerpoTemp, Variables);
+                result = Integer.toString(resultI);
             }
         }
 

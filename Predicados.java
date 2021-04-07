@@ -79,9 +79,9 @@ public class Predicados {
                ArrayList<String> ValoresAlmacenados = new ArrayList<String>();
 
                // Ciclo for para la cantidad de elementos en lista.
-               for ( int contador = 3; contador < condiciones.size()-2; contador++) {
-                    // Por cada elemento de la lista, se agregan al array.
-                    //elementos[contador] = condiciones.get(contador); // No es Variables
+               for ( int contador = 2; contador < condiciones.size()-1; contador++) {
+
+                  // Por cada elemento de la lista, se agregan al array.
                     if ( condiciones.get(contador) != ")" ) {
                         ValoresAlmacenados.add(condiciones.get(contador)); // Se almacena el contenido del list si no es un parentesis
                     }

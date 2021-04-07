@@ -1,6 +1,6 @@
 
 /***************************************************************
-* Calculadora.java
+* DriverInterprete.java
 * Autor: UVG
 * Universidad del Valle de Guatemala
 *
